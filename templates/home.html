@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h2>yogae Django Application</h2>
+    <ul>
+        {% comment %} {% for appname in app_list %}
+            {% with appname|add:":"|add:"index" as urlvar%}
+                <li><a href="{% url urlvar %}">{{ appname }}</a></li>
+            {% endwith %}
+        {% endfor %} {% endcomment %}
+
+        {% comment %} verbose_dict를 순회 {% endcomment %}
+        {% comment %} 템플릿 문법에서는 함수 호출을 의미하는 ()를 사용하지 않음 {% endcomment %}
+        {% for key, value in verbose_dict.items %}
+            <li><a href="{% url key|add:':index' %}">{{ value }}</a></li>
+        {% endfor %}
+    </ul>
+{% endblock %}
